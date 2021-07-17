@@ -1,0 +1,17 @@
+How to Run apache kafka
+
+1. Create path variable to access commands such as KAFKA HOME for windows give path -  C:\kafka_2.13-2.4.1\bin\windows
+2. create data folder in kafka home directory
+3. create folders kafka and zookeeper under data folder C:\kafka_2.13-2.4.1\data\kafka and C:\kafka_2.13-2.4.1\data\zookeeper
+4. edit dataDir=C:/kafka_2.13-2.4.1/data/zookeeper in zookeeper.properties 
+5. edit log.dirs=C:/kafka_2.13-2.4.1/data/kafka in server.properties 
+6. Run this command - zookeeper-server-start.bat config\zookeeper.properties
+7. Run this command - kafka-server-start.bat config\server.properties
+8. create topics
+	kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test-san
+9. list topics
+	kafka-topics.bat --list --zookeeper localhost:2181
+10. kafka consumer consoleserver
+	kafka-console-consumer.bat --bootstrap- localhost:9092 --topic test-san --from-beginning
+11. kafka producer console
+	kafka-console-producer.bat --broker-list localhost:9092 --topic test-san
